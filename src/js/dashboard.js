@@ -1,6 +1,49 @@
 // Initialize wedding data from data.js
 let weddingData = {};
 
+// Add this to your existing dashboard.js file
+
+// Logout functionality
+// Add this to your existing dashboard.js file or in a script tag at the end of your HTML
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('signOutButton').addEventListener('click', function(e) {
+        e.preventDefault();
+        console.log('Logging out...');
+        localStorage.clear();
+        window.location.href = 'login.html'; // Change to your login page
+    });
+});
+
+// document.addEventListener('DOMContentLoaded', function() {
+//     // Get all dropdown items and find the one with "Sign out" text
+//     const allDropdownItems = document.querySelectorAll('.dropdown-menu .dropdown-item');
+    
+//     allDropdownItems.forEach(item => {
+//         if (item.textContent.trim() === 'Sign out') {
+//             item.addEventListener('click', function(e) {
+//                 e.preventDefault();
+                
+//                 // Perform logout actions
+//                 console.log('Logging out...');
+                
+//                 // Clear any stored user data (if using localStorage)
+//                 localStorage.clear();
+                
+//                 // Redirect to login page
+//                 window.location.href = 'login.html'; // Change this to your login page URL
+//             });
+//         }
+//     });
+// });
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Check if user is logged in
+    if (sessionStorage.getItem('loggedIn') !== 'true') {
+        window.location.href = 'login.html';
+        return;
+    }
+})
+
 // Add this to your dashboard.js file
 document.addEventListener('DOMContentLoaded', function() {
   // Get all sidebar navigation links
