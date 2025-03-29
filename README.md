@@ -1,4 +1,4 @@
-## Fitur ✨
+<!-- ## Fitur ✨
 
 - 📊 **Penyimpanan Data**: Menggunakan Google Sheets API untuk menyimpan dan mengelola data undangan.
 - 📱 **Desain Responsif**: Dioptimalkan untuk berbagai ukuran layar.
@@ -124,4 +124,4 @@ Proyek ini merupakan redesain dari undangan pernikahan milik [Dewanakl](https://
 
 ---
 
-Terima kasih telah mengunjungi repositori ini. Semoga hari pernikahan Anda berjalan lancar dan penuh kebahagiaan! 😊
+Terima kasih telah mengunjungi repositori ini. Semoga hari pernikahan Anda berjalan lancar dan penuh kebahagiaan! 😊 -->

@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./src/css/dashboard.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row flex-nowrap">
+            <!-- Sidebar -->
+            <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+                <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                    <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                        <span class="fs-5 d-none d-sm-inline">Wedding Dashboard</span>
+                    </a>
+                    <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                      <li class="nav-item">
+                          <a href="#bride-section" class="nav-link align-middle px-0 text-white" data-section="bride">
+                              <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Bride & Groom</span>
+                          </a>
+                      </li>
+                      <li>
+                          <a href="#time-section" class="nav-link px-0 align-middle text-white" data-section="time">
+                              <i class="fs-4 bi-clock"></i> <span class="ms-1 d-none d-sm-inline">Event Time</span>
+                          </a>
+                      </li>
+                      <li>
+                          <a href="#link-section" class="nav-link px-0 align-middle text-white" data-section="link">
+                              <i class="fs-4 bi-link"></i> <span class="ms-1 d-none d-sm-inline">Links</span>
+                          </a>
+                      </li>
+                      <li>
+                          <a href="#gallery-section" class="nav-link px-0 align-middle text-white" data-section="gallery">
+                              <i class="fs-4 bi-images"></i> <span class="ms-1 d-none d-sm-inline">Gallery</span>
+                          </a>
+                      </li>
+                      <li>
+                          <a href="#bank-section" class="nav-link px-0 align-middle text-white" data-section="bank">
+                              <i class="fs-4 bi-credit-card"></i> <span class="ms-1 d-none d-sm-inline">Bank Accounts</span>
+                          </a>
+                      </li>
+                      <li>
+                          <a href="#audio-section" class="nav-link px-0 align-middle text-white" data-section="audio">
+                              <i class="fs-4 bi-music-note"></i> <span class="ms-1 d-none d-sm-inline">Audio</span>
+                          </a>
+                      </li>
+                      <li>
+                          <a href="#api-section" class="nav-link px-0 align-middle text-white" data-section="api">
+                              <i class="fs-4 bi-code-slash"></i> <span class="ms-1 d-none d-sm-inline">API Settings</span>
+                          </a>
+                      </li>
+                  </ul>
+                    <hr>
+                    <div class="dropdown pb-4">
+                        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="./src/assets/images/couple.png" alt="profile" width="30" height="30" class="rounded-circle">
+                            <span class="d-none d-sm-inline mx-1">Admin</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                            <li><a class="dropdown-item" href="#">Settings</a></li>
+                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Sign out</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Main Content -->
+            <div class="col py-3">
+                <h2 class="mb-4 section-title">Bride & Groom Information</h2>
+                
+                <!-- Bride & Groom Section -->
+                <div class="content-section" id="bride-section">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            Couple Information
+                        </div>
+                        <div class="card-body">
+                            <form id="couple-form">
+                                <div class="row mb-3">
+                                    <div class="col-12 mb-3">
+                                        <label for="couple-image" class="form-label">Couple Image</label>
+                                        <input type="file" class="form-control" id="couple-image">
+                                        <div class="mt-2">
+                                            <img src="" id="couple-preview" class="img-thumbnail" style="max-height: 150px; display: none;">
+                                            <p id="couple-image-path" class="text-muted"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            Groom Information
+                        </div>
+                        <div class="card-body">
+                            <form id="groom-form">
+                                <div class="row mb-3">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="groom-name" class="form-label">Name</label>
+                                        <input type="text" class="form-control" id="groom-name">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="groom-child" class="form-label">Child Status</label>
+                                        <input type="text" class="form-control" id="groom-child">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="groom-father" class="form-label">Father's Name</label>
+                                        <input type="text" class="form-control" id="groom-father">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="groom-mother" class="form-label">Mother's Name</label>
+                                        <input type="text" class="form-control" id="groom-mother">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-12 mb-3">
+                                        <label for="groom-image" class="form-label">Image</label>
+                                        <input type="file" class="form-control" id="groom-image">
+                                        <div class="mt-2">
+                                            <img src="" id="groom-preview" class="img-thumbnail" style="max-height: 150px; display: none;">
+                                            <p id="groom-image-path" class="text-muted"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            Bride Information
+                        </div>
+                        <div class="card-body">
+                            <form id="bride-form">
+                                <div class="row mb-3">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="bride-name" class="form-label">Name</label>
+                                        <input type="text" class="form-control" id="bride-name">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="bride-child" class="form-label">Child Status</label>
+                                        <input type="text" class="form-control" id="bride-child">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="bride-father" class="form-label">Father's Name</label>
+                                        <input type="text" class="form-control" id="bride-father">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="bride-mother" class="form-label">Mother's Name</label>
+                                        <input type="text" class="form-control" id="bride-mother">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-12 mb-3">
+                                        <label for="bride-image" class="form-label">Image</label>
+                                        <input type="file" class="form-control" id="bride-image">
+                                        <div class="mt-2">
+                                            <img src="" id="bride-preview" class="img-thumbnail" style="max-height: 150px; display: none;">
+                                            <p id="bride-image-path" class="text-muted"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Time Section -->
+                <div class="content-section" id="time-section" style="display: none;">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            Marriage Ceremony
+                        </div>
+                        <div class="card-body">
+                            <form id="marriage-form">
+                                <div class="row mb-3">
+                                    <div class="col-md-3 mb-3">
+                                        <label for="marriage-year" class="form-label">Year</label>
+                                        <input type="text" class="form-control" id="marriage-year">
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label for="marriage-month" class="form-label">Month</label>
+                                        <input type="text" class="form-control" id="marriage-month">
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label for="marriage-date" class="form-label">Date</label>
+                                        <input type="text" class="form-control" id="marriage-date">
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label for="marriage-day" class="form-label">Day</label>
+                                        <input type="text" class="form-control" id="marriage-day">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="marriage-start" class="form-label">Start Time</label>
+                                        <input type="text" class="form-control" id="marriage-start">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="marriage-finish" class="form-label">End Time</label>
+                                        <input type="text" class="form-control" id="marriage-finish">
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            Reception Ceremony
+                        </div>
+                        <div class="card-body">
+                            <form id="reception-form">
+                                <div class="row mb-3">
+                                    <div class="col-md-3 mb-3">
+                                        <label for="reception-year" class="form-label">Year</label>
+                                        <input type="text" class="form-control" id="reception-year">
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label for="reception-month" class="form-label">Month</label>
+                                        <input type="text" class="form-control" id="reception-month">
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label for="reception-date" class="form-label">Date</label>
+                                        <input type="text" class="form-control" id="reception-date">
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label for="reception-day" class="form-label">Day</label>
+                                        <input type="text" class="form-control" id="reception-day">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="reception-start" class="form-label">Start Time</label>
+                                        <input type="text" class="form-control" id="reception-start">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="reception-finish" class="form-label">End Time</label>
+                                        <input type="text" class="form-control" id="reception-finish">
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            Venue Address
+                        </div>
+                        <div class="card-body">
+                            <form id="address-form">
+                                <div class="row mb-3">
+                                    <div class="col-12 mb-3">
+                                        <label for="venue-address" class="form-label">Address</label>
+                                        <textarea class="form-control" id="venue-address" rows="3"></textarea>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Links Section -->
+                <div class="content-section" id="link-section" style="display: none;">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            Important Links
+                        </div>
+                        <div class="card-body">
+                            <form id="links-form">
+                                <div class="row mb-3">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="calendar-link" class="form-label">Calendar Link</label>
+                                        <input type="text" class="form-control" id="calendar-link">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="map-link" class="form-label">Map Link</label>
+                                        <input type="text" class="form-control" id="map-link">
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Section -->
+                <div class="content-section" id="gallery-section" style="display: none;">
+                    <div class="card mb-4">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <span>Gallery Images</span>
+                            <button class="btn btn-sm btn-success" id="add-gallery-btn">
+                                <i class="bi bi-plus-circle"></i> Add New Image
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <div id="gallery-container" class="row">
+                                <!-- Gallery items will be dynamically added here -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Add/Edit Gallery Modal -->
+                    <div class="modal fade" id="galleryModal" tabindex="-1" aria-labelledby="galleryModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="galleryModalLabel">Add Gallery Image</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form id="gallery-form">
+                                        <input type="hidden" id="gallery-id">
+                                        <div class="mb-3">
+                                            <label for="gallery-image" class="form-label">Image</label>
+                                            <input type="file" class="form-control" id="gallery-image">
+                                            <div class="mt-2">
+                                                <img src="" id="gallery-preview" class="img-thumbnail" style="max-height: 150px; display: none;">
+                                                <p id="gallery-image-path" class="text-muted"></p>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary" id="save-gallery-btn">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Bank Accounts Section -->
+                <div class="content-section" id="bank-section" style="display: none;">
+                    <div class="card mb-4">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <span>Bank Accounts</span>
+                            <button class="btn btn-sm btn-success" id="add-bank-btn">
+                                <i class="bi bi-plus-circle"></i> Add New Account
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <div id="bank-container">
+                                <!-- Bank account items will be dynamically added here -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Add/Edit Bank Modal -->
+                    <div class="modal fade" id="bankModal" tabindex="-1" aria-labelledby="bankModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="bankModalLabel">Add Bank Account</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form id="bank-form">
+                                        <input type="hidden" id="bank-id">
+                                        <div class="mb-3">
+                                            <label for="bank-name" class="form-label">Account Holder Name</label>
+                                            <input type="text" class="form-control" id="bank-name" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="bank-rekening" class="form-label">Account Number</label>
+                                            <input type="text" class="form-control" id="bank-rekening" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="bank-icon" class="form-label">Bank Icon</label>
+                                            <input type="file" class="form-control" id="bank-icon">
+                                            <div class="mt-2">
+                                                <img src="" id="bank-preview" class="img-thumbnail" style="max-height: 150px; display: none;">
+                                                <p id="bank-icon-path" class="text-muted"></p>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary" id="save-bank-btn">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Audio Section -->
+                <div class="content-section" id="audio-section" style="display: none;">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            Background Music
+                        </div>
+                        <div class="card-body">
+                            <form id="audio-form">
+                                <div class="row mb-3">
+                                    <div class="col-12 mb-3">
+                                        <label for="audio-file" class="form-label">Audio File</label>
+                                        <input type="file" class="form-control" id="audio-file" accept="audio/*">
+                                        <div class="mt-2">
+                                            <p id="audio-path" class="text-muted"></p>
+                                            <audio id="audio-preview" controls style="display: none;"></audio>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- API Section -->
+                <div class="content-section" id="api-section" style="display: none;">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            API Configuration
+                        </div>
+                        <div class="card-body">
+                            <form id="api-form">
+                                <div class="row mb-3">
+                                    <div class="col-12 mb-3">
+                                        <label for="api-endpoint" class="form-label">API Endpoint</label>
+                                        <input type="text" class="form-control" id="api-endpoint">
+                                        <small class="form-text text-muted">Google Script or other backend API endpoint for form submissions</small>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Save Changes Notification -->
+                <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+                    <div id="saveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                        <div class="toast-header bg-success text-white">
+                            <strong class="me-auto">Success</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                        </div>
+                        <div class="toast-body">
+                            Changes saved successfully!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./src/js/dashboard.js"></script>
+</body>
+</html>
